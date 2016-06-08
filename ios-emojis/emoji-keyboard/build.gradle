@@ -1,0 +1,48 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.12.1'
+    }
+}
+apply plugin: 'com.android.application'
+
+repositories {
+        mavenCentral()
+}
+
+android {
+    compileSdkVersion 20
+    buildToolsVersion "20.0.0"
+
+    defaultConfig {
+        minSdkVersion 8
+        targetSdkVersion 20
+        versionCode 2
+        versionName "1.01"
+    }
+    signingConfigs {
+        release {
+            storeFile file("../emoji-keyboard-ios.jks")
+            storePassword "notforyou"
+            keyAlias "emoji-keyboard"
+            keyPassword "notforyou"
+        }
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+            signingConfig signingConfigs.release
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
+}
