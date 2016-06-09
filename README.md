@@ -1,3 +1,5 @@
+![promo](https://raw.githubusercontent.com/klinker24/Android-SlidingEmojiKeyboard/master/ios-emojis/Other/Promo.png)
+
 # Android Sliding Emoji Keyboard
 Our Sliding Emoji Keyboard app.
 
