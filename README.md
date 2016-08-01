@@ -8,7 +8,9 @@ Basic keyboard application that allows you to insert emojis. This repo has Andro
 All three projects can be found on the Play Store:
 
 [Unlocker](https://play.google.com/store/apps/details?id=com.klinker.android.emoji_keyboard)
+
 [Android Emoji Keyboard](https://play.google.com/store/apps/details?id=com.klinker.android.emoji_keyboard_trial)
+
 [iOS Emoji Keyboard](https://play.google.com/store/apps/details?id=com.klinker.android.emoji_keyboard_trial_ios)
 
 ---
