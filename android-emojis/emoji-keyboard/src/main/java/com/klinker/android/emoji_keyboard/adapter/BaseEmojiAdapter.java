@@ -1,32 +1,31 @@
-package com.klinker.android.emoji_keyboard.emoji_pager.adapter;
+package com.klinker.android.emoji_keyboard.adapter;
 
 import android.content.Context;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
+
 import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
-import com.klinker.android.emoji_keyboard.sqlite.Recent;
 import com.klinker.android.emoji_keyboard_trial.R;
 
 import java.util.ArrayList;
 
-public class RecentEmojiAdapter extends BaseEmojiAdapter {
+public abstract class BaseEmojiAdapter extends BaseAdapter {
 
-    private ArrayList<Recent> recents;
+    protected Context context;
 
-    public RecentEmojiAdapter(Context context, ArrayList<Recent> recents) {
-        super(context);
-        this.recents = recents;
+    protected ArrayList<String> emojiTexts;
+    protected ArrayList<Integer> iconIds;
+
+    public BaseEmojiAdapter(Context context) {
+        this.context = context;
     }
 
     @Override
     public int getCount() {
-        try {
-            return recents.size();
-        } catch (Exception e) {
-            return 0;
-        }
+        return emojiTexts.size();
     }
 
     @Override
@@ -41,27 +40,26 @@ public class RecentEmojiAdapter extends BaseEmojiAdapter {
             imageView = (ImageView) convertView;
         }
 
-        imageView.setImageResource(Integer.parseInt(recents.get(position).icon));
+        imageView.setImageResource(iconIds.get(position));
         imageView.setBackgroundResource(R.drawable.btn_background);
 
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EmojiKeyboardService.addText(recents.get(position).text, Integer.parseInt(recents.get(position).icon));
-            }
-        });
-
-        final RecentEmojiAdapter adapter = this;
-
-        imageView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View view) {
-                EmojiKeyboardService.removeRecent(position);
-                adapter.notifyDataSetChanged();
-                return true;
+                EmojiKeyboardService.addText(emojiTexts.get(position), iconIds.get(position));
             }
         });
 
         return imageView;
+    }
+
+    @Override
+    public Object getItem(int arg0) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
     }
 }
