@@ -11,17 +11,18 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
-import com.klinker.android.emoji_keyboard.EmojiKeyboardInputMethodServiceAdapter;
 import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
+import com.klinker.android.emoji_keyboard.adapter.EmojiPagerAdapter;
 import com.klinker.android.emoji_keyboard_trial.R;
 
 public class EmojiKeyboardView extends View {
 
     private ViewPager viewPager;
     private PagerSlidingTabStrip pagerSlidingTabStrip;
-    private EmojiPagerAdapter emojiPagerAdapter;
     private LinearLayout layout;
-    private EmojiKeyboardInputMethodServiceAdapter emojiKeyboardInputMethodServiceAdapter;
+
+    private EmojiPagerAdapter emojiPagerAdapter;
+    private EmojiKeyboardService emojiKeyboardService;
 
     public EmojiKeyboardView(Context context) {
         super(context);
@@ -40,7 +41,7 @@ public class EmojiKeyboardView extends View {
 
     private void initialize(Context context) {
 
-        emojiKeyboardInputMethodServiceAdapter = new EmojiKeyboardInputMethodServiceAdapter((EmojiKeyboardService) context, this);
+        emojiKeyboardService = (EmojiKeyboardService) context;
 
         LayoutInflater inflater = (LayoutInflater)   getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -70,6 +71,7 @@ public class EmojiKeyboardView extends View {
 
     public void notifyDataSetChanged() {
         emojiPagerAdapter.notifyDataSetChanged();
+        viewPager.refreshDrawableState();
     }
 
     private Button setupDeleteButton( Button delete) {
@@ -77,7 +79,7 @@ public class EmojiKeyboardView extends View {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                emojiKeyboardInputMethodServiceAdapter.sendDeleteKeyPressEvent();
+                emojiKeyboardService.sendDownAndUpKeyEvent(KeyEvent.KEYCODE_DEL, 0);
             }
         });
 
@@ -104,7 +106,4 @@ public class EmojiKeyboardView extends View {
         setMeasuredDimension(width, height);
     }
 
-    public void onFinishInput() {
-        emojiKeyboardInputMethodServiceAdapter.onFinishInput();
-    }
 }

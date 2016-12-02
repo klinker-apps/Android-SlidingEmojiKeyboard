@@ -1,13 +1,10 @@
 package com.klinker.android.emoji_keyboard;
 
-import android.content.Context;
 import android.inputmethodservice.InputMethodService;
 import android.os.Build;
 import android.os.SystemClock;
-import android.view.Display;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
@@ -42,13 +39,6 @@ public class EmojiKeyboardService extends InputMethodService {
     public void onStartInput(EditorInfo attribute, boolean restarting) {
         super.onStartInputView(attribute, restarting);
         inputConnection = getCurrentInputConnection();
-    }
-
-    @Override
-    public void onFinishInput() {
-        super.onFinishInput();
-
-        emojiKeyboardView.onFinishInput();
     }
 
     public void sendText(String text) {

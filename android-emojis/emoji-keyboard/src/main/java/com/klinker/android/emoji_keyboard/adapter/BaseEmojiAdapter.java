@@ -1,13 +1,11 @@
 package com.klinker.android.emoji_keyboard.adapter;
 
-import android.content.Context;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
-import com.klinker.android.emoji_keyboard.EmojiKeyboardInputMethodServiceAdapter;
 import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
 import com.klinker.android.emoji_keyboard_trial.R;
 
@@ -15,13 +13,12 @@ import java.util.ArrayList;
 
 public abstract class BaseEmojiAdapter extends BaseAdapter {
 
-    protected Context context;
-
+    protected EmojiKeyboardService emojiKeyboardService;
     protected ArrayList<String> emojiTexts;
     protected ArrayList<Integer> iconIds;
 
-    public BaseEmojiAdapter(Context context) {
-        this.context = context;
+    public BaseEmojiAdapter(EmojiKeyboardService emojiKeyboardService ) {
+        this.emojiKeyboardService = emojiKeyboardService;
     }
 
     @Override
@@ -33,8 +30,8 @@ public abstract class BaseEmojiAdapter extends BaseAdapter {
     public View getView(final int position, View convertView, ViewGroup parent) {
         final ImageView imageView;
         if (convertView == null) {
-            imageView = new ImageView(context);
-            int scale = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, context.getResources().getDisplayMetrics());
+            imageView = new ImageView(emojiKeyboardService);
+            int scale = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 10, emojiKeyboardService.getResources().getDisplayMetrics());
             imageView.setPadding(scale, (int)(scale*1.2), scale, (int)(scale * 1.2));
             imageView.setAdjustViewBounds(true);
         } else {
@@ -47,7 +44,7 @@ public abstract class BaseEmojiAdapter extends BaseAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EmojiKeyboardInputMethodServiceAdapter.sendEmojiForInput(emojiTexts.get(position), iconIds.get(position));
+                emojiKeyboardService.sendText(emojiTexts.get(position));
             }
         });
 

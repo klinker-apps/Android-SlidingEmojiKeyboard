@@ -21,8 +21,12 @@ public class EmojiDataSource {
         databaseHelper = new EmojiSQLiteHelper(context);
     }
 
-    public void open() throws SQLException {
+    public void openInReadWriteMode() throws SQLException {
         database = databaseHelper.getWritableDatabase();
+    }
+
+    public void openInReadMode() throws SQLException {
+        database = databaseHelper.getReadableDatabase();
     }
 
     public void close() {
@@ -56,7 +60,7 @@ public class EmojiDataSource {
         }
     }
 
-    public void updateExistingEntry(String icon) {
+    public void incrementExistingEntryCountbyOne(String icon) {
         Cursor cursor = database.query(EmojiSQLiteHelper.TABLE_RECENTS,
                 allColumns, EmojiSQLiteHelper.COLUMN_ICON + " = " + icon, null,
                 null, null, null);
