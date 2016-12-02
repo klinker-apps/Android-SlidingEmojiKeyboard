@@ -65,7 +65,7 @@ public class EmojiDataSource {
         cursor.close();
         newRecentEntry.incrementUsageCountByOne();
         ContentValues values = getFilledContentValuesObject(newRecentEntry);
-        database.update(EmojiSQLiteHelper.TABLE_RECENTS, values, EmojiSQLiteHelper.COLUMN_ID + newRecentEntry.getId(), null);
+        database.update(EmojiSQLiteHelper.TABLE_RECENTS, values, EmojiSQLiteHelper.COLUMN_ID +"="+ newRecentEntry.getId(), null);
     }
 
     public boolean deleteEntryWithId(long id) {
