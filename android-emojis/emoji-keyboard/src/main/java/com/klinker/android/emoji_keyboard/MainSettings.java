@@ -5,9 +5,6 @@ import android.preference.PreferenceActivity;
 
 import com.klinker.android.emoji_keyboard_trial.R;
 
-/**
- * Created by luke on 10/16/13.
- */
 public class MainSettings extends PreferenceActivity {
 
     @SuppressWarnings("deprecation")

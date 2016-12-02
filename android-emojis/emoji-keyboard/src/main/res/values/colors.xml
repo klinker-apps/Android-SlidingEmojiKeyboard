@@ -6,6 +6,7 @@
     <color name="holo_blue">#33B5E5</color>
     <color name="delete_color">#adadad</color>
     <color name="divider_color">#1A000000</color>
+    <color name="experimental">#FF0000</color>
 
     <color name="trial_expired_background">#DD000000</color>
 

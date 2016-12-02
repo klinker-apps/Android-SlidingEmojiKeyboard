@@ -3,7 +3,7 @@
 
     <string name="app_name">Sliding Emoji Keyboard</string>
 
-    <string name="recent">Recents</string>
+    <string name="recentEntry">Recents</string>
     <string name="people">People</string>
     <string name="things">Objects</string>
     <string name="nature">Nature</string>

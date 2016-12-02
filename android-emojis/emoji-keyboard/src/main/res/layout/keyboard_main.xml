@@ -10,8 +10,8 @@
                 android:layout_height="48dp"
                 android:layout_width="match_parent">
 
-            <com.astuetz.viewpager.extensions.PagerSlidingTabStrip
-                    android:id="@+id/tabs"
+            <com.astuetz.PagerSlidingTabStrip
+                    android:id="@+id/emojiCategorytab"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="48dp"/>
@@ -24,28 +24,14 @@
                               android:layout_width="wrap_content"
                               android:layout_height="46dp">
 
-                    <View android:id="@+id/view1"
-                          android:layout_width="1dp"
-                          android:layout_height="wrap_content"
-                          android:layout_marginBottom="@dimen/divider_padding"
-                          android:layout_marginTop="@dimen/divider_padding"
-                          android:background="@color/divider_color"/>
-
-                    <ImageButton android:id="@+id/delete"
+                    <Button android:id="@+id/deleteButton"
                                  android:layout_width="wrap_content"
                                  android:layout_height="48dp"
                                  android:scaleType="fitCenter"
-                                 android:src="@drawable/ic_delete"
-                                 android:background="@drawable/btn_background"
-                                 android:paddingLeft="15dp"
-                                 android:paddingRight="15dp"/>
+                                 android:text="&#x232B;"
+                                 android:background="@drawable/btn_background"/>
 
                 </LinearLayout>
-
-                <View android:id="@+id/view2"
-                      android:layout_width="match_parent"
-                      android:layout_height="2dp"
-                      android:background="@color/divider_color"/>
 
             </LinearLayout>
 
