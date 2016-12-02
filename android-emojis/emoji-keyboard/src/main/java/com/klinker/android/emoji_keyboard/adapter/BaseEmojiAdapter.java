@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
+import com.klinker.android.emoji_keyboard.EmojiKeyboardInputMethodServiceAdapter;
 import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
 import com.klinker.android.emoji_keyboard_trial.R;
 
@@ -46,7 +47,7 @@ public abstract class BaseEmojiAdapter extends BaseAdapter {
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EmojiKeyboardService.addText(emojiTexts.get(position), iconIds.get(position));
+                EmojiKeyboardInputMethodServiceAdapter.sendEmojiForInput(emojiTexts.get(position), iconIds.get(position));
             }
         });
 

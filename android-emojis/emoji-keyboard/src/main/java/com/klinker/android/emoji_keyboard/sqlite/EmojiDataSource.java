@@ -10,75 +10,77 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 public class EmojiDataSource {
+    private static final int NUM_RECENTS_TO_SAVE = 60;
     // Database fields
     private SQLiteDatabase database;
-    private EmojiSQLiteHelper dbHelper;
+    private EmojiSQLiteHelper databaseHelper;
     private String[] allColumns = { EmojiSQLiteHelper.COLUMN_ID,
             EmojiSQLiteHelper.COLUMN_TEXT, EmojiSQLiteHelper.COLUMN_ICON, EmojiSQLiteHelper.COLUMN_COUNT };
 
     public EmojiDataSource(Context context) {
-        dbHelper = new EmojiSQLiteHelper(context);
+        databaseHelper = new EmojiSQLiteHelper(context);
     }
 
     public void open() throws SQLException {
-        database = dbHelper.getWritableDatabase();
+        database = databaseHelper.getWritableDatabase();
     }
 
     public void close() {
-        dbHelper.close();
+        databaseHelper.close();
     }
 
-    public Recent createRecent(String text, String icon) {
-        try {
-            ContentValues values = new ContentValues();
-            values.put(EmojiSQLiteHelper.COLUMN_TEXT, text);
-            values.put(EmojiSQLiteHelper.COLUMN_ICON, icon);
-            values.put(EmojiSQLiteHelper.COLUMN_COUNT, 0);
-            long insertId = database.insert(EmojiSQLiteHelper.TABLE_RECENTS, null,
-                    values);
-            Cursor cursor = database.query(EmojiSQLiteHelper.TABLE_RECENTS,
-                    allColumns, EmojiSQLiteHelper.COLUMN_ID + " = " + insertId, null,
-                    null, null, null);
-            cursor.moveToFirst();
-            Recent newRecent = cursorToRecent(cursor);
-            cursor.close();
-            return newRecent;
-        } catch (Exception e) {
+    private ContentValues getFilledContentValuesObject(String text, String icon, long count) {
+
+        ContentValues values = new ContentValues();
+        values.put(EmojiSQLiteHelper.COLUMN_TEXT, text);
+        values.put(EmojiSQLiteHelper.COLUMN_ICON, icon);
+        values.put(EmojiSQLiteHelper.COLUMN_COUNT, count);
+
+        return values;
+    }
+
+    private ContentValues getFilledContentValuesObject(RecentEntry recentEntry) {
+        return getFilledContentValuesObject(recentEntry.getText(), recentEntry.getIcon(), recentEntry.getCount());
+    }
+
+    public RecentEntry insertNewEntry(String text, String icon) {
+
+        int initialCount = 0;
+        ContentValues values = getFilledContentValuesObject(text, icon, initialCount);
+        long insertId = database.insert(EmojiSQLiteHelper.TABLE_RECENTS, null, values);
+
+        if (insertId == -1) {
             return null;
+        } else {
+            return new RecentEntry(text, icon, initialCount, insertId);
         }
     }
 
-    public void updateRecent(String icon) {
-        try {
-            Cursor cursor = database.query(EmojiSQLiteHelper.TABLE_RECENTS,
-                    allColumns, EmojiSQLiteHelper.COLUMN_ICON + " = " + icon, null,
-                    null, null, null);
-            cursor.moveToFirst();
-            Recent newRecent = cursorToRecent(cursor);
-            cursor.close();
-            ContentValues values = new ContentValues();
-            values.put(EmojiSQLiteHelper.COLUMN_TEXT, newRecent.text);
-            values.put(EmojiSQLiteHelper.COLUMN_ICON, newRecent.icon);
-            values.put(EmojiSQLiteHelper.COLUMN_COUNT, newRecent.count + 1);
-            database.update(EmojiSQLiteHelper.TABLE_RECENTS, values, "_id=" + newRecent.id, null);
-        } catch (Exception e) {
+    public void updateExistingEntry(String icon) {
+        Cursor cursor = database.query(EmojiSQLiteHelper.TABLE_RECENTS,
+                allColumns, EmojiSQLiteHelper.COLUMN_ICON + " = " + icon, null,
+                null, null, null);
+        cursor.moveToFirst();
+        RecentEntry newRecentEntry = cursorToRecent(cursor);
+        cursor.close();
+        newRecentEntry.incrementUsageCountByOne();
+        ContentValues values = getFilledContentValuesObject(newRecentEntry);
+        database.update(EmojiSQLiteHelper.TABLE_RECENTS, values, EmojiSQLiteHelper.COLUMN_ID + newRecentEntry.getId(), null);
+    }
 
+    public boolean deleteEntryWithId(long id) {
+
+        int rowsDeleted = database.delete(EmojiSQLiteHelper.TABLE_RECENTS, EmojiSQLiteHelper.COLUMN_ID + " = " + id, null);
+
+        if(rowsDeleted == 0) {
+            return false;
+        } else {
+            return true;
         }
     }
 
-    public void deleteRecent(long id) {
-        try {
-            database.delete(EmojiSQLiteHelper.TABLE_RECENTS, EmojiSQLiteHelper.COLUMN_ID
-                    + " = " + id, null);
-        } catch (Exception e) {
-
-        }
-    }
-
-    private static final int NUM_RECENTS_TO_SAVE = 60;
-
-    public List<Recent> getAllRecents() {
-        List<Recent> recents = new ArrayList<Recent>();
+    public List<RecentEntry> getAllEntriesInDescendingOrderOfCount() {
+        List<RecentEntry> recentEntries = new ArrayList<RecentEntry>();
 
         Cursor cursor = database.query(EmojiSQLiteHelper.TABLE_RECENTS,
                 allColumns, null, null, null, null, EmojiSQLiteHelper.COLUMN_COUNT + " * 1 DESC");
@@ -86,25 +88,23 @@ public class EmojiDataSource {
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             if (cursor.getPosition() >= NUM_RECENTS_TO_SAVE) {
-                deleteRecent(cursor.getLong(0));
+                deleteEntryWithId(cursor.getLong(0));
             } else {
-                Recent recent = cursorToRecent(cursor);
-                recents.add(recent);
+                RecentEntry recentEntry = cursorToRecent(cursor);
+                recentEntries.add(recentEntry);
             }
 
             cursor.moveToNext();
         }
 
         cursor.close();
-        return recents;
+        return recentEntries;
     }
 
-    private Recent cursorToRecent(Cursor cursor) {
-        Recent recent = new Recent();
-        recent.id = cursor.getLong(0);
-        recent.text = cursor.getString(1);
-        recent.icon = cursor.getString(2);
-        recent.count = cursor.getLong(3);
-        return recent;
+    private RecentEntry cursorToRecent(Cursor cursor) {
+        return new RecentEntry(cursor.getString(1),
+                                cursor.getString(2),
+                                cursor.getLong(3),
+                                cursor.getLong(0));
     }
 }

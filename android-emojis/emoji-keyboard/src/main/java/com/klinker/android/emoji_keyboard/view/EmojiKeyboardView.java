@@ -4,12 +4,14 @@ import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.astuetz.PagerSlidingTabStrip;
+import com.klinker.android.emoji_keyboard.EmojiKeyboardInputMethodServiceAdapter;
 import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
 import com.klinker.android.emoji_keyboard_trial.R;
 
@@ -19,8 +21,7 @@ public class EmojiKeyboardView extends View {
     private PagerSlidingTabStrip pagerSlidingTabStrip;
     private static EmojiPagerAdapter emojiPagerAdapter;
     private LinearLayout layout;
-
-    private EmojiKeyboardService emojiKeyboardService;
+    private EmojiKeyboardInputMethodServiceAdapter emojiKeyboardInputMethodServiceAdapter;
 
     public EmojiKeyboardView(Context context) {
         super(context);
@@ -39,7 +40,7 @@ public class EmojiKeyboardView extends View {
 
     private void initialize(Context context) {
 
-        emojiKeyboardService = (EmojiKeyboardService) context;
+        emojiKeyboardInputMethodServiceAdapter = new EmojiKeyboardInputMethodServiceAdapter((EmojiKeyboardService) context, this);
 
         LayoutInflater inflater = (LayoutInflater)   getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -51,7 +52,7 @@ public class EmojiKeyboardView extends View {
 
         pagerSlidingTabStrip.setIndicatorColor(getResources().getColor(R.color.pager_color));
 
-        emojiPagerAdapter = new EmojiPagerAdapter(emojiKeyboardService, viewPager);
+        emojiPagerAdapter = new EmojiPagerAdapter(context, viewPager);
 
         viewPager.setAdapter(emojiPagerAdapter);
 
@@ -67,7 +68,7 @@ public class EmojiKeyboardView extends View {
         return layout;
     }
 
-    public static void notifyDataSetChanged() {
+    public void notifyDataSetChanged() {
         emojiPagerAdapter.notifyDataSetChanged();
     }
 
@@ -76,7 +77,7 @@ public class EmojiKeyboardView extends View {
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                emojiKeyboardService.removeText();
+                emojiKeyboardInputMethodServiceAdapter.sendDeleteKeyPressEvent();
             }
         });
 
@@ -101,5 +102,9 @@ public class EmojiKeyboardView extends View {
 
         Log.d("emojiKeyboardView", width +" : " + height);
         setMeasuredDimension(width, height);
+    }
+
+    public void onFinishInput() {
+        emojiKeyboardInputMethodServiceAdapter.onFinishInput();
     }
 }

@@ -4,25 +4,26 @@ import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.klinker.android.emoji_keyboard.EmojiKeyboardInputMethodServiceAdapter;
 import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
-import com.klinker.android.emoji_keyboard.sqlite.Recent;
+import com.klinker.android.emoji_keyboard.sqlite.RecentEntry;
 
 import java.util.ArrayList;
 
 public class RecentEmojiAdapter extends BaseEmojiAdapter {
 
-    public RecentEmojiAdapter(Context context, ArrayList<Recent> recents) {
+    public RecentEmojiAdapter(Context context, ArrayList<RecentEntry> recentEntries) {
         super(context);
 
-        setupEmojiDataFromList(recents);
+        setupEmojiDataFromList(recentEntries);
     }
 
-    private void setupEmojiDataFromList(ArrayList<Recent> recents) {
+    private void setupEmojiDataFromList(ArrayList<RecentEntry> recentEntries) {
         emojiTexts = new ArrayList<String>();
         iconIds = new ArrayList<Integer>();
-        for(Recent i: recents) {
-            emojiTexts.add(i.text);
-            iconIds.add(Integer.parseInt(i.icon));
+        for(RecentEntry i: recentEntries) {
+            emojiTexts.add(i.getText());
+            iconIds.add(Integer.parseInt(i.getIcon()));
         }
     }
 
@@ -35,7 +36,7 @@ public class RecentEmojiAdapter extends BaseEmojiAdapter {
         imageView.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View view) {
-                EmojiKeyboardService.removeRecent(position);
+                EmojiKeyboardInputMethodServiceAdapter.removeRecent(position);
                 adapter.notifyDataSetChanged();
                 return true;
             }
