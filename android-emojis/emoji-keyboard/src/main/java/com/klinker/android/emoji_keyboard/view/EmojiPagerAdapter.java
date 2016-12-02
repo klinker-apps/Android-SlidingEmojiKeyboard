@@ -26,11 +26,13 @@ public class EmojiPagerAdapter extends PagerAdapter {
 
     private ViewPager pager;
     private ArrayList<View> pages;
+    private int keyboardHeight;
 
-    public EmojiPagerAdapter(Context context, ViewPager pager) {
+    public EmojiPagerAdapter(Context context, ViewPager pager, int keyboardHeight) {
         super();
 
         this.pager = pager;
+        this.keyboardHeight = keyboardHeight;
         this.pages = new ArrayList<View>();
 
         pages.add(new KeyboardSinglePageView(context, new RecentEmojiAdapter(context, EmojiKeyboardInputMethodServiceAdapter.getFrequentlyUsedEmojiList())).getView());
@@ -44,7 +46,7 @@ public class EmojiPagerAdapter extends PagerAdapter {
 
     @Override
     public View instantiateItem(ViewGroup container, int position) {
-        pager.addView(pages.get(position), position, EmojiKeyboardService.getKeyboardHeight());
+        pager.addView(pages.get(position), position, keyboardHeight);
         return pages.get(position);
     }
 

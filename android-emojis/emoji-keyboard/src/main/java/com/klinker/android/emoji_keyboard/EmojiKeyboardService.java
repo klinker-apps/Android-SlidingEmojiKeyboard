@@ -11,23 +11,14 @@ import android.view.WindowManager;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 
-import com.klinker.android.emoji_keyboard.sqlite.RecentEntry;
 import com.klinker.android.emoji_keyboard.view.EmojiKeyboardView;
-import com.klinker.android.emoji_keyboard.sqlite.EmojiDataSource;
 import com.klinker.android.emoji_keyboard_trial.R;
-
-import java.util.ArrayList;
 
 public class EmojiKeyboardService extends InputMethodService {
 
     private EmojiKeyboardView emojiKeyboardView;
-    public static int keyboardHeight;
 
     private InputConnection inputConnection;
-
-    public static int getKeyboardHeight() {
-        return keyboardHeight;
-    }
 
     public EmojiKeyboardService() {
         super();
@@ -39,9 +30,6 @@ public class EmojiKeyboardService extends InputMethodService {
 
     @Override
     public View onCreateInputView() {
-
-        Display d = ((WindowManager)getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay();
-        keyboardHeight = (int) (d.getHeight()/3.0);
 
         emojiKeyboardView = (EmojiKeyboardView) getLayoutInflater()
                 .inflate(R.layout.emoji_keyboard_layout, null);

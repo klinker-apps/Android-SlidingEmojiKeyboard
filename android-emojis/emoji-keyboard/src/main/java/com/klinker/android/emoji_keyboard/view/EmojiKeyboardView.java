@@ -19,7 +19,7 @@ public class EmojiKeyboardView extends View {
 
     private ViewPager viewPager;
     private PagerSlidingTabStrip pagerSlidingTabStrip;
-    private static EmojiPagerAdapter emojiPagerAdapter;
+    private EmojiPagerAdapter emojiPagerAdapter;
     private LinearLayout layout;
     private EmojiKeyboardInputMethodServiceAdapter emojiKeyboardInputMethodServiceAdapter;
 
@@ -52,7 +52,7 @@ public class EmojiKeyboardView extends View {
 
         pagerSlidingTabStrip.setIndicatorColor(getResources().getColor(R.color.pager_color));
 
-        emojiPagerAdapter = new EmojiPagerAdapter(context, viewPager);
+        emojiPagerAdapter = new EmojiPagerAdapter(context, viewPager, height);
 
         viewPager.setAdapter(emojiPagerAdapter);
 
@@ -92,8 +92,8 @@ public class EmojiKeyboardView extends View {
     }
 
 
-    int width;
-    int height;
+    private int width;
+    private int height;
     @Override
     public void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 

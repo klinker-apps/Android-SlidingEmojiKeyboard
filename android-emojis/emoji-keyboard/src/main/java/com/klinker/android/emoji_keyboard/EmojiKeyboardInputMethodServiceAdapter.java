@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class EmojiKeyboardInputMethodServiceAdapter {
 
-    private EmojiKeyboardService emojiKeyboardService;
+    private static EmojiKeyboardService emojiKeyboardService;
     private static EmojiKeyboardView emojiKeyboardView;
     private static EmojiDataSource dataSource;
     private static ArrayList<RecentEntry> frequentlyUsedEmojiList;
@@ -40,7 +40,7 @@ public class EmojiKeyboardInputMethodServiceAdapter {
 
     public static void sendEmojiForInput(String emoji, int icon) {
 
-        EmojiKeyboardService.sendText(emoji);
+        emojiKeyboardService.sendText(emoji);
 
         for (int i = 0; i < frequentlyUsedEmojiList.size(); i++) {
             if (frequentlyUsedEmojiList.get(i).getText().equals(emoji)) {
