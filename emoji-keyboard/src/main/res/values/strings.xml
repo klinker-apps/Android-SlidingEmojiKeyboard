@@ -18,4 +18,7 @@
     <string name="trial_expired">Trial Expired…</string>
     <string name="get_full">Unlock</string>
 
+    <string name="setting_change_icon_set_key">icon_set</string>
+    <string name="setting_change_icon_set_value_google">Google</string>
+    <string name="setting_change_icon_set_value_apple">Apple</string>
 </resources>

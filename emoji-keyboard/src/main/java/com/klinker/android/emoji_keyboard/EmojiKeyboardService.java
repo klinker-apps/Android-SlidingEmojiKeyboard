@@ -25,6 +25,12 @@ public class EmojiKeyboardService extends InputMethodService {
     private InputMethodManager previousInputMethodManager;
     private IBinder iBinder;
 
+    private static Context staticApplicationContext;
+
+    public static Context getStaticApplicationContext() {
+        return staticApplicationContext;
+    }
+
     public EmojiKeyboardService() {
         super();
 
@@ -35,6 +41,8 @@ public class EmojiKeyboardService extends InputMethodService {
 
     @Override
     public View onCreateInputView() {
+
+        staticApplicationContext = getApplicationContext();
 
         previousInputMethodManager = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         iBinder = this.getWindow().getWindow().getAttributes().token;
