@@ -39,9 +39,10 @@ public class EmojiPagerAdapter extends PagerAdapter {
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(pager.getContext());
 
         EmojiIcons icons = null;
-        if (sharedPreferences.getString("icon_set", "Google").equals("Google")){
+        String set = sharedPreferences.getString("icon_set", "Google");
+        if (set.equals("Google")){
             icons = new Google_EmojiIcons();
-        } else if (sharedPreferences.getString("icon_set", "Apple").equals("Apple")) {
+        } else if (set.equals("Apple")) {
             icons = new Apple_EmojiIcons();
         }
 

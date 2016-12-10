@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.2'
+        classpath 'com.android.tools.build:gradle:2.2.3'
     }
 }
 apply plugin: 'com.android.application'
@@ -13,14 +13,14 @@ repositories {
 }
 
 android {
-    compileSdkVersion 20
-    buildToolsVersion "21.0.0"
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         minSdkVersion 11
-        targetSdkVersion 20
-        versionCode 9
-        versionName "1.37"
+        targetSdkVersion 25
+        versionCode 10
+        versionName "2.0.0"
     }
     signingConfigs {
         release {
@@ -45,6 +45,6 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:20.0.0'
+    compile 'com.android.support:support-v4:25.0.1'
     compile 'com.astuetz:pagerslidingtabstrip:1.0.1'
 }

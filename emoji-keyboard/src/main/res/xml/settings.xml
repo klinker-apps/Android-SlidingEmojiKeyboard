@@ -14,6 +14,6 @@
         android:title="@string/emoji_icon_set"
         android:entries="@array/emojiIconsCategory"
         android:entryValues="@array/emojiIconsCategory"
-        android:defaultValue="1" />
+        android:defaultValue="Google" />
 
 </PreferenceScreen>
