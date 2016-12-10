@@ -1,17 +1,21 @@
-![promo](https://raw.githubusercontent.com/klinker24/Android-SlidingEmojiKeyboard/master/ios-emojis/Other/Promo.png)
+![promo](https://raw.githubusercontent.com/klinker24/Android-SlidingEmojiKeyboard/master/Other/Promo.png)
 
 # Android Sliding Emoji Keyboard
 Our Sliding Emoji Keyboard app.
 
-Basic keyboard application that allows you to insert emojis. This repo has Android's Hangouts emojis, iOS emojis, and an unlocker app to remove the trial limitation on the keyboards.
+Basic keyboard application that allows you to insert emojis. It has a settings activity that allows you to switch between iOS and Android style emojis.
 
-All three projects can be found on the Play Store:
+### Download
+
+The current version of this repo isn't (and won't) be on the Play Store. I have 3 legacy versions out on the Play Store that support features of our older apps and shouldn't be updated/removed for that reason. They can be found here:
 
 [Unlocker](https://play.google.com/store/apps/details?id=com.klinker.android.emoji_keyboard)
 
 [Android Emoji Keyboard](https://play.google.com/store/apps/details?id=com.klinker.android.emoji_keyboard_trial)
 
 [iOS Emoji Keyboard](https://play.google.com/store/apps/details?id=com.klinker.android.emoji_keyboard_trial_ios)
+
+The current version of that app, which houses the iOS and Android emojis, in a single keyboard, can be downloaded from the attached [APK](emoji-keyboard.apk), if you would rather not just clone the repo and build it.
 
 ---
 
@@ -30,4 +34,3 @@ All three projects can be found on the Play Store:
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
-

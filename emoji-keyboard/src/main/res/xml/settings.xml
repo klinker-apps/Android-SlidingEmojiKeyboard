@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="emoji_keyboard_color"
+        android:title="@string/emoji_keyboard_color"
+        android:entries="@array/emojiKeyboardColor"
+        android:entryValues="@array/emojiKeyboardColorSet"
+        android:defaultValue="1" />
+
+    <ListPreference
+        android:key="@string/setting_change_icon_set_key"
+        android:title="@string/emoji_icon_set"
+        android:entries="@array/emojiIconsCategory"
+        android:entryValues="@array/emojiIconsCategory"
+        android:defaultValue="Google" />
+
+</PreferenceScreen>
