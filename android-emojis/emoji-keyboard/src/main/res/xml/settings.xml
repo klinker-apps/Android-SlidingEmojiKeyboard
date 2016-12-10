@@ -7,7 +7,13 @@
         android:title="@string/emoji_keyboard_color"
         android:entries="@array/emojiKeyboardColor"
         android:entryValues="@array/emojiKeyboardColorSet"
-        android:defaultValue="1"
-        />
+        android:defaultValue="1" />
+
+    <ListPreference
+        android:key="icon_set"
+        android:title="@string/emoji_icon_set"
+        android:entries="@array/emojiIconsCategory"
+        android:entryValues="@array/emojiIconsCategorySet"
+        android:defaultValue="1" />
 
 </PreferenceScreen>

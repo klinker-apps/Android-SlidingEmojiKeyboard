@@ -13,6 +13,7 @@
     <string name="settings">Settings</string>
 
     <string name="emoji_keyboard_color">Emoji Keyboard Color</string>
+    <string name="emoji_icon_set">Emoji Icon Set</string>
 
     <string name="trial_expired">Trial Expired…</string>
     <string name="get_full">Unlock</string>
