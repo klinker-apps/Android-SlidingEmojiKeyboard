@@ -1,6 +1,7 @@
 package com.klinker.android.emoji_keyboard.view;
 
 import android.content.Context;
+import android.os.Vibrator;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -9,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
@@ -57,8 +59,8 @@ public class EmojiKeyboardView extends View {
 
         viewPager.setAdapter(emojiPagerAdapter);
 
-        Button delete = (Button) layout.findViewById(R.id.deleteButton);
-        delete = setupDeleteButton(delete);
+        setupDeleteButton();
+
         pagerSlidingTabStrip.setViewPager(viewPager);
 
         viewPager.setCurrentItem(1);
@@ -74,7 +76,9 @@ public class EmojiKeyboardView extends View {
         viewPager.refreshDrawableState();
     }
 
-    private Button setupDeleteButton( Button delete) {
+    private void setupDeleteButton() {
+
+        Button delete = (Button) layout.findViewById(R.id.deleteButton);
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,11 +90,10 @@ public class EmojiKeyboardView extends View {
         delete.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                //do nothing
+                emojiKeyboardService.switchToPreviousInputMethod();
                 return false;
             }
         });
-        return delete;
     }
 
 
