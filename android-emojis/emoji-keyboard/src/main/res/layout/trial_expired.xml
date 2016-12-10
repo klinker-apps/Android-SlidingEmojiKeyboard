@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/imageView"
             android:layout_gravity="center"
-            android:src="@drawable/emoji_u1f61e"/>
+            android:src="@drawable/google_emoji_u1f61e"/>
 
     <Button
             android:layout_width="wrap_content"

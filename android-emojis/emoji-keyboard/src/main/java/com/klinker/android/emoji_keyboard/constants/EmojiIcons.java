@@ -1,200 +1,33 @@
 package com.klinker.android.emoji_keyboard.constants;
 
-import com.klinker.android.emoji_keyboard.Utility;
-import com.klinker.android.emoji_keyboard_trial.R;
-
 import java.util.ArrayList;
 
-public interface EmojiIcons {
+public abstract class EmojiIcons {
 
-    ArrayList<Integer> transIconIds = Utility.initArrayList(
-            R.drawable.emoji_u1f3e0, R.drawable.emoji_u1f3e1, R.drawable.emoji_u1f3e2, R.drawable.emoji_u1f3e3, R.drawable.emoji_u1f3e4,
-            R.drawable.emoji_u1f3e5, R.drawable.emoji_u1f3e6, R.drawable.emoji_u1f3e7, R.drawable.emoji_u1f3e8, R.drawable.emoji_u1f3e9,
-            R.drawable.emoji_u1f3ea, R.drawable.emoji_u1f3eb, R.drawable.emoji_u26ea, R.drawable.emoji_u26f2, R.drawable.emoji_u1f3ec,
-            R.drawable.emoji_u1f3ef, R.drawable.emoji_u1f3f0, R.drawable.emoji_u1f3ed, R.drawable.emoji_u1f5fb, R.drawable.emoji_u1f5fc,
-            R.drawable.emoji_u1f488, R.drawable.emoji_u1f527, R.drawable.emoji_u1f528, R.drawable.emoji_u1f529, R.drawable.emoji_u1f6bf,
-            R.drawable.emoji_u1f6c1, R.drawable.emoji_u1f6c0, R.drawable.emoji_u1f6bd, R.drawable.emoji_u1f6be, R.drawable.emoji_u1f3bd,
-            R.drawable.emoji_u1f3a3, R.drawable.emoji_u1f3b1, R.drawable.emoji_u1f3b3, R.drawable.emoji_u26be, R.drawable.emoji_u26f3,
-            R.drawable.emoji_u1f3be, R.drawable.emoji_u26bd, R.drawable.emoji_u1f3bf, R.drawable.emoji_u1f3c0, R.drawable.emoji_u1f3c1,
-            R.drawable.emoji_u1f3c2, R.drawable.emoji_u1f3c3, R.drawable.emoji_u1f3c4, R.drawable.emoji_u1f3c6, R.drawable.emoji_u1f3c7,
-            R.drawable.emoji_u1f40e, R.drawable.emoji_u1f3c8, R.drawable.emoji_u1f3c9, R.drawable.emoji_u1f3ca, R.drawable.emoji_u1f682,
-            R.drawable.emoji_u1f683, R.drawable.emoji_u1f684, R.drawable.emoji_u1f685, R.drawable.emoji_u1f686, R.drawable.emoji_u1f687,
-            R.drawable.emoji_u24c2, R.drawable.emoji_u1f688, R.drawable.emoji_u1f68a, R.drawable.emoji_u1f68b, R.drawable.emoji_u1f68c,
-            R.drawable.emoji_u1f68d, R.drawable.emoji_u1f68e, R.drawable.emoji_u1f68f, R.drawable.emoji_u1f690, R.drawable.emoji_u1f691,
-            R.drawable.emoji_u1f692, R.drawable.emoji_u1f693, R.drawable.emoji_u1f694, R.drawable.emoji_u1f695, R.drawable.emoji_u1f696,
-            R.drawable.emoji_u1f697, R.drawable.emoji_u1f698, R.drawable.emoji_u1f699, R.drawable.emoji_u1f69a, R.drawable.emoji_u1f69b,
-            R.drawable.emoji_u1f69c, R.drawable.emoji_u1f69d, R.drawable.emoji_u1f69e, R.drawable.emoji_u1f69f, R.drawable.emoji_u1f6a0,
-            R.drawable.emoji_u1f6a1, R.drawable.emoji_u1f6a2, R.drawable.emoji_u1f6a3, R.drawable.emoji_u1f681, R.drawable.emoji_u2708,
-            R.drawable.emoji_u1f6c2, R.drawable.emoji_u1f6c3, R.drawable.emoji_u1f6c4, R.drawable.emoji_u1f6c5, R.drawable.emoji_u26f5,
-            R.drawable.emoji_u1f6b2, R.drawable.emoji_u1f6b3, R.drawable.emoji_u1f6b4, R.drawable.emoji_u1f6b5, R.drawable.emoji_u1f6b7,
-            R.drawable.emoji_u1f6b8, R.drawable.emoji_u1f689, R.drawable.emoji_u1f680, R.drawable.emoji_u1f6a4, R.drawable.emoji_u1f6b6,
-            R.drawable.emoji_u26fd, R.drawable.emoji_u1f17f, R.drawable.emoji_u1f6a5, R.drawable.emoji_u1f6a6, R.drawable.emoji_u1f6a7,
-            R.drawable.emoji_u1f6a8, R.drawable.emoji_u2668, R.drawable.emoji_u1f48c, R.drawable.emoji_u1f48d, R.drawable.emoji_u1f48e,
-            R.drawable.emoji_u1f490, R.drawable.emoji_u1f492, R.drawable.emoji_ufe4e5, R.drawable.emoji_ufe4e6, R.drawable.emoji_ufe4e7,
-            R.drawable.emoji_ufe4e8, R.drawable.emoji_ufe4e9, R.drawable.emoji_ufe4ea, R.drawable.emoji_ufe4eb, R.drawable.emoji_ufe4ec,
-            R.drawable.emoji_ufe4ed, R.drawable.emoji_ufe4ee
-    );
+    protected ArrayList<Integer> transIconIds;
+    protected ArrayList<Integer> thingsIconIds;
+    protected ArrayList<Integer> peopleIconIds;
+    protected ArrayList<Integer> otherIconIds;
+    protected ArrayList<Integer> natureIconIds;
 
-    ArrayList<Integer> thingsIconIds = Utility.initArrayList(
-            //things
-            R.drawable.emoji_u1f530, R.drawable.emoji_u1f484, R.drawable.emoji_u1f45e, R.drawable.emoji_u1f45f, R.drawable.emoji_u1f451,
-            R.drawable.emoji_u1f452, R.drawable.emoji_u1f3a9, R.drawable.emoji_u1f393, R.drawable.emoji_u1f453, R.drawable.emoji_u231a,
-            R.drawable.emoji_u1f454, R.drawable.emoji_u1f455, R.drawable.emoji_u1f456, R.drawable.emoji_u1f457, R.drawable.emoji_u1f458,
-            R.drawable.emoji_u1f459, R.drawable.emoji_u1f460, R.drawable.emoji_u1f461, R.drawable.emoji_u1f462, R.drawable.emoji_u1f45a,
-            R.drawable.emoji_u1f45c, R.drawable.emoji_u1f4bc, R.drawable.emoji_u1f392, R.drawable.emoji_u1f45d, R.drawable.emoji_u1f45b,
-            R.drawable.emoji_u1f4b0, R.drawable.emoji_u1f4b3, R.drawable.emoji_u1f4b2, R.drawable.emoji_u1f4b5, R.drawable.emoji_u1f4b4,
-            R.drawable.emoji_u1f4b6, R.drawable.emoji_u1f4b7, R.drawable.emoji_u1f4b1, R.drawable.emoji_u1f4b8, R.drawable.emoji_u1f4b9,
-            R.drawable.emoji_u1f52b, R.drawable.emoji_u1f52a, R.drawable.emoji_u1f4a3, R.drawable.emoji_u1f489, R.drawable.emoji_u1f48a,
-            R.drawable.emoji_u1f6ac, R.drawable.emoji_u1f514, R.drawable.emoji_u1f515, R.drawable.emoji_u1f6aa, R.drawable.emoji_u1f52c,
-            R.drawable.emoji_u1f52d, R.drawable.emoji_u1f52e, R.drawable.emoji_u1f526, R.drawable.emoji_u1f50b, R.drawable.emoji_u1f50c,
-            R.drawable.emoji_u1f4dc, R.drawable.emoji_u1f4d7, R.drawable.emoji_u1f4d8, R.drawable.emoji_u1f4d9, R.drawable.emoji_u1f4da,
-            R.drawable.emoji_u1f4d4, R.drawable.emoji_u1f4d2, R.drawable.emoji_u1f4d1, R.drawable.emoji_u1f4d3, R.drawable.emoji_u1f4d5,
-            R.drawable.emoji_u1f4d6, R.drawable.emoji_u1f4f0, R.drawable.emoji_u1f4db, R.drawable.emoji_u1f383, R.drawable.emoji_u1f384,
-            R.drawable.emoji_u1f380, R.drawable.emoji_u1f381, R.drawable.emoji_u1f382, R.drawable.emoji_u1f388, R.drawable.emoji_u1f386,
-            R.drawable.emoji_u1f387, R.drawable.emoji_u1f389, R.drawable.emoji_u1f38a, R.drawable.emoji_u1f38d, R.drawable.emoji_u1f38f,
-            R.drawable.emoji_u1f38c, R.drawable.emoji_u1f390, R.drawable.emoji_u1f38b, R.drawable.emoji_u1f38e, R.drawable.emoji_u1f4f1,
-            R.drawable.emoji_u1f4f2, R.drawable.emoji_u1f4df, R.drawable.emoji_u260e, R.drawable.emoji_u1f4de, R.drawable.emoji_u1f4e0,
-            R.drawable.emoji_u1f4e6, R.drawable.emoji_u2709, R.drawable.emoji_u1f4e8, R.drawable.emoji_u1f4e9, R.drawable.emoji_u1f4ea,
-            R.drawable.emoji_u1f4eb, R.drawable.emoji_u1f4ed, R.drawable.emoji_u1f4ec, R.drawable.emoji_u1f4ee, R.drawable.emoji_u1f4e4,
-            R.drawable.emoji_u1f4e5, R.drawable.emoji_u1f4ef, R.drawable.emoji_u1f4e3, R.drawable.emoji_u1f4e2, R.drawable.emoji_u1f4e1,
-            R.drawable.emoji_u1f4ac, R.drawable.emoji_u1f4ad, R.drawable.emoji_u2712, R.drawable.emoji_u270f, R.drawable.emoji_u1f4dd,
-            R.drawable.emoji_u1f4cf, R.drawable.emoji_u1f4d0, R.drawable.emoji_u1f4cd, R.drawable.emoji_u1f4cc, R.drawable.emoji_u1f4ce,
-            R.drawable.emoji_u2702, R.drawable.emoji_u1f4ba, R.drawable.emoji_u1f4bb, R.drawable.emoji_u1f4bd, R.drawable.emoji_u1f4be,
-            R.drawable.emoji_u1f4bf, R.drawable.emoji_u1f4c6, R.drawable.emoji_u1f4c5, R.drawable.emoji_u1f4c7, R.drawable.emoji_u1f4cb,
-            R.drawable.emoji_u1f4c1, R.drawable.emoji_u1f4c2, R.drawable.emoji_u1f4c3, R.drawable.emoji_u1f4c4, R.drawable.emoji_u1f4ca,
-            R.drawable.emoji_u1f4c8, R.drawable.emoji_u1f4c9, R.drawable.emoji_u26fa, R.drawable.emoji_u1f3a1, R.drawable.emoji_u1f3a2,
-            R.drawable.emoji_u1f3a0, R.drawable.emoji_u1f3aa, R.drawable.emoji_u1f3a8, R.drawable.emoji_u1f3ac, R.drawable.emoji_u1f3a5,
-            R.drawable.emoji_u1f4f7, R.drawable.emoji_u1f4f9, R.drawable.emoji_u1f3a6, R.drawable.emoji_u1f3ad, R.drawable.emoji_u1f3ab,
-            R.drawable.emoji_u1f3ae, R.drawable.emoji_u1f3b2, R.drawable.emoji_u1f3b0, R.drawable.emoji_u1f0cf, R.drawable.emoji_u1f3b4,
-            R.drawable.emoji_u1f004, R.drawable.emoji_u1f3af, R.drawable.emoji_u1f4fa, R.drawable.emoji_u1f4fb, R.drawable.emoji_u1f4c0,
-            R.drawable.emoji_u1f4fc, R.drawable.emoji_u1f3a7, R.drawable.emoji_u1f3a4, R.drawable.emoji_u1f3b5, R.drawable.emoji_u1f3b6,
-            R.drawable.emoji_u1f3bc, R.drawable.emoji_u1f3bb, R.drawable.emoji_u1f3b9, R.drawable.emoji_u1f3b7, R.drawable.emoji_u1f3ba,
-            R.drawable.emoji_u1f3b8, R.drawable.emoji_u303d
-    );
+    public ArrayList<Integer> getNatureIconIds() {
+        return natureIconIds;
+    }
 
-    ArrayList<Integer> peopleIconIds = Utility.initArrayList(
-            // people
-            R.drawable.emoji_u263a, R.drawable.emoji_u1f60a,  R.drawable.emoji_u1f600, R.drawable.emoji_u1f601, R.drawable.emoji_u1f602,
-            R.drawable.emoji_u1f603, R.drawable.emoji_u1f604, R.drawable.emoji_u1f605, R.drawable.emoji_u1f606, R.drawable.emoji_u1f607,
-            R.drawable.emoji_u1f608, R.drawable.emoji_u1f609, R.drawable.emoji_u1f62f, R.drawable.emoji_u1f610, R.drawable.emoji_u1f611,
-            R.drawable.emoji_u1f615, R.drawable.emoji_u1f620, R.drawable.emoji_u1f62c, R.drawable.emoji_u1f621, R.drawable.emoji_u1f622,
-            R.drawable.emoji_u1f634, R.drawable.emoji_u1f62e, R.drawable.emoji_u1f623, R.drawable.emoji_u1f624, R.drawable.emoji_u1f625,
-            R.drawable.emoji_u1f626, R.drawable.emoji_u1f627, R.drawable.emoji_u1f628, R.drawable.emoji_u1f629, R.drawable.emoji_u1f630,
-            R.drawable.emoji_u1f61f, R.drawable.emoji_u1f631, R.drawable.emoji_u1f632, R.drawable.emoji_u1f633, R.drawable.emoji_u1f635,
-            R.drawable.emoji_u1f636, R.drawable.emoji_u1f637, R.drawable.emoji_u1f61e, R.drawable.emoji_u1f612, R.drawable.emoji_u1f60d,
-            R.drawable.emoji_u1f61b, R.drawable.emoji_u1f61c, R.drawable.emoji_u1f61d, R.drawable.emoji_u1f60b, R.drawable.emoji_u1f617,
-            R.drawable.emoji_u1f619, R.drawable.emoji_u1f618, R.drawable.emoji_u1f61a, R.drawable.emoji_u1f60e, R.drawable.emoji_u1f62d,
-            R.drawable.emoji_u1f60c, R.drawable.emoji_u1f616, R.drawable.emoji_u1f614, R.drawable.emoji_u1f62a, R.drawable.emoji_u1f60f,
-            R.drawable.emoji_u1f613, R.drawable.emoji_u1f62b, R.drawable.emoji_u1f64b, R.drawable.emoji_u1f64c, R.drawable.emoji_u1f64d,
-            R.drawable.emoji_u1f645, R.drawable.emoji_u1f646, R.drawable.emoji_u1f647, R.drawable.emoji_u1f64e, R.drawable.emoji_u1f64f,
-            R.drawable.emoji_u1f63a, R.drawable.emoji_u1f63c, R.drawable.emoji_u1f638, R.drawable.emoji_u1f639, R.drawable.emoji_u1f63b,
-            R.drawable.emoji_u1f63d, R.drawable.emoji_u1f63f, R.drawable.emoji_u1f63e, R.drawable.emoji_u1f640, R.drawable.emoji_u1f648,
-            R.drawable.emoji_u1f649, R.drawable.emoji_u1f64a, R.drawable.emoji_u1f4a9, R.drawable.emoji_u1f476, R.drawable.emoji_u1f466,
-            R.drawable.emoji_u1f467, R.drawable.emoji_u1f468, R.drawable.emoji_u1f469, R.drawable.emoji_u1f474, R.drawable.emoji_u1f475,
-            R.drawable.emoji_u1f48f, R.drawable.emoji_u1f491, R.drawable.emoji_u1f46a, R.drawable.emoji_u1f46b, R.drawable.emoji_u1f46c,
-            R.drawable.emoji_u1f46d, R.drawable.emoji_u1f464, R.drawable.emoji_u1f465, R.drawable.emoji_u1f46e, R.drawable.emoji_u1f477,
-            R.drawable.emoji_u1f481, R.drawable.emoji_u1f482, R.drawable.emoji_u1f46f, R.drawable.emoji_u1f470, R.drawable.emoji_u1f478,
-            R.drawable.emoji_u1f385, R.drawable.emoji_u1f47c, R.drawable.emoji_u1f471, R.drawable.emoji_u1f472, R.drawable.emoji_u1f473,
-            R.drawable.emoji_u1f483, R.drawable.emoji_u1f486, R.drawable.emoji_u1f487, R.drawable.emoji_u1f485, R.drawable.emoji_u1f47b,
-            R.drawable.emoji_u1f479, R.drawable.emoji_u1f47a, R.drawable.emoji_u1f47d, R.drawable.emoji_u1f47e, R.drawable.emoji_u1f47f,
-            R.drawable.emoji_u1f480, R.drawable.emoji_u1f4aa, R.drawable.emoji_u1f440, R.drawable.emoji_u1f442, R.drawable.emoji_u1f443,
-            R.drawable.emoji_u1f463, R.drawable.emoji_u1f444, R.drawable.emoji_u1f445, R.drawable.emoji_u1f48b, R.drawable.emoji_u2764,
-            R.drawable.emoji_u1f499, R.drawable.emoji_u1f49a, R.drawable.emoji_u1f49b, R.drawable.emoji_u1f49c, R.drawable.emoji_u1f493,
-            R.drawable.emoji_u1f494, R.drawable.emoji_u1f495, R.drawable.emoji_u1f496, R.drawable.emoji_u1f497, R.drawable.emoji_u1f498,
-            R.drawable.emoji_u1f49d, R.drawable.emoji_u1f49e, R.drawable.emoji_u1f49f, R.drawable.emoji_u1f44d, R.drawable.emoji_u1f44e,
-            R.drawable.emoji_u1f44c, R.drawable.emoji_u270a, R.drawable.emoji_u270c, R.drawable.emoji_u270b, R.drawable.emoji_u1f44a,
-            R.drawable.emoji_u261d, R.drawable.emoji_u1f446, R.drawable.emoji_u1f447, R.drawable.emoji_u1f448, R.drawable.emoji_u1f449,
-            R.drawable.emoji_u1f44b, R.drawable.emoji_u1f44f, R.drawable.emoji_u1f450
-    );
-    ArrayList<Integer> otherIconIds = Utility.initArrayList(
-            // other
-            R.drawable.emoji_u1f51d, R.drawable.emoji_u1f519, R.drawable.emoji_u1f51b, R.drawable.emoji_u1f51c, R.drawable.emoji_u1f51a,
-            R.drawable.emoji_u23f3, R.drawable.emoji_u231b, R.drawable.emoji_u23f0, R.drawable.emoji_u2648, R.drawable.emoji_u2649,
-            R.drawable.emoji_u264a, R.drawable.emoji_u264b, R.drawable.emoji_u264c, R.drawable.emoji_u264d, R.drawable.emoji_u264e,
-            R.drawable.emoji_u264f, R.drawable.emoji_u2650, R.drawable.emoji_u2651, R.drawable.emoji_u2652, R.drawable.emoji_u2653,
-            R.drawable.emoji_u26ce, R.drawable.emoji_u1f531, R.drawable.emoji_u1f52f, R.drawable.emoji_u1f6bb, R.drawable.emoji_u1f6ae,
-            R.drawable.emoji_u1f6af, R.drawable.emoji_u1f6b0, R.drawable.emoji_u1f6b1, R.drawable.emoji_u1f170, R.drawable.emoji_u1f171,
-            R.drawable.emoji_u1f18e, R.drawable.emoji_u1f17e, R.drawable.emoji_u1f4ae, R.drawable.emoji_u1f4af, R.drawable.emoji_u1f520,
-            R.drawable.emoji_u1f521, R.drawable.emoji_u1f522, R.drawable.emoji_u1f523, R.drawable.emoji_u1f524, R.drawable.emoji_u27bf,
-            R.drawable.emoji_u1f4f6, R.drawable.emoji_u1f4f3, R.drawable.emoji_u1f4f4, R.drawable.emoji_u1f4f5, R.drawable.emoji_u1f6b9,
-            R.drawable.emoji_u1f6ba, R.drawable.emoji_u1f6bc, R.drawable.emoji_u267f, R.drawable.emoji_u267b, R.drawable.emoji_u1f6ad,
-            R.drawable.emoji_u1f6a9, R.drawable.emoji_u26a0, R.drawable.emoji_u1f201, R.drawable.emoji_u1f51e, R.drawable.emoji_u26d4,
-            R.drawable.emoji_u1f192, R.drawable.emoji_u1f197, R.drawable.emoji_u1f195, R.drawable.emoji_u1f198, R.drawable.emoji_u1f199,
-            R.drawable.emoji_u1f193, R.drawable.emoji_u1f196, R.drawable.emoji_u1f19a, R.drawable.emoji_u1f232, R.drawable.emoji_u1f233,
-            R.drawable.emoji_u1f234, R.drawable.emoji_u1f235, R.drawable.emoji_u1f236, R.drawable.emoji_u1f237, R.drawable.emoji_u1f238,
-            R.drawable.emoji_u1f239, R.drawable.emoji_u1f202, R.drawable.emoji_u1f23a, R.drawable.emoji_u1f250, R.drawable.emoji_u1f251,
-            R.drawable.emoji_u3299, R.drawable.emoji_u00ae, R.drawable.emoji_u00a9, R.drawable.emoji_u2122, R.drawable.emoji_u1f21a,
-            R.drawable.emoji_u1f22f, R.drawable.emoji_u3297, R.drawable.emoji_u2b55, R.drawable.emoji_u274c, R.drawable.emoji_u274e,
-            R.drawable.emoji_u2139, R.drawable.emoji_u1f6ab, R.drawable.emoji_u2705, R.drawable.emoji_u2714, R.drawable.emoji_u1f517,
-            R.drawable.emoji_u2734, R.drawable.emoji_u2733, R.drawable.emoji_u2795, R.drawable.emoji_u2796, R.drawable.emoji_u2716,
-            R.drawable.emoji_u2797, R.drawable.emoji_u1f4a0, R.drawable.emoji_u1f4a1, R.drawable.emoji_u1f4a4, R.drawable.emoji_u1f4a2,
-            R.drawable.emoji_u1f525, R.drawable.emoji_u1f4a5, R.drawable.emoji_u1f4a6, R.drawable.emoji_u1f4a8, R.drawable.emoji_u1f4ab,
-            R.drawable.emoji_u1f55b, R.drawable.emoji_u1f567, R.drawable.emoji_u1f550, R.drawable.emoji_u1f55c, R.drawable.emoji_u1f551,
-            R.drawable.emoji_u1f55d, R.drawable.emoji_u1f552, R.drawable.emoji_u1f55e, R.drawable.emoji_u1f553, R.drawable.emoji_u1f55f,
-            R.drawable.emoji_u1f554, R.drawable.emoji_u1f560, R.drawable.emoji_u1f555, R.drawable.emoji_u1f561, R.drawable.emoji_u1f556,
-            R.drawable.emoji_u1f562, R.drawable.emoji_u1f557, R.drawable.emoji_u1f563, R.drawable.emoji_u1f558, R.drawable.emoji_u1f564,
-            R.drawable.emoji_u1f559, R.drawable.emoji_u1f565, R.drawable.emoji_u1f55a, R.drawable.emoji_u1f566, R.drawable.emoji_u2195,
-            R.drawable.emoji_u2b06, R.drawable.emoji_u2197, R.drawable.emoji_u27a1, R.drawable.emoji_u2198, R.drawable.emoji_u2b07,
-            R.drawable.emoji_u2199, R.drawable.emoji_u2b05, R.drawable.emoji_u2196, R.drawable.emoji_u2194, R.drawable.emoji_u2934,
-            R.drawable.emoji_u2935, R.drawable.emoji_u23ea, R.drawable.emoji_u23e9, R.drawable.emoji_u23eb, R.drawable.emoji_u23ec,
-            R.drawable.emoji_u25c0, R.drawable.emoji_u25b6, R.drawable.emoji_u1f53d, R.drawable.emoji_u1f53c, R.drawable.emoji_u2747,
-            R.drawable.emoji_u2728, R.drawable.emoji_u1f534, R.drawable.emoji_u1f535, R.drawable.emoji_u26aa, R.drawable.emoji_u26ab,
-            R.drawable.emoji_u1f533, R.drawable.emoji_u1f532, R.drawable.emoji_u2b50, R.drawable.emoji_u1f31f, R.drawable.emoji_u1f320,
-            R.drawable.emoji_u25ab, R.drawable.emoji_u25aa, R.drawable.emoji_u25fd, R.drawable.emoji_u25fe, R.drawable.emoji_u25fc,
-            R.drawable.emoji_u25fb, R.drawable.emoji_u2b1b, R.drawable.emoji_u2b1c, R.drawable.emoji_u1f539, R.drawable.emoji_u1f538,
-            R.drawable.emoji_u1f537, R.drawable.emoji_u1f536, R.drawable.emoji_u1f53a, R.drawable.emoji_u1f53b, R.drawable.emoji_u1f51f,
-            R.drawable.emoji_u20e3, R.drawable.emoji_u2754, R.drawable.emoji_u2753, R.drawable.emoji_u2755, R.drawable.emoji_u2757,
-            R.drawable.emoji_u203c, R.drawable.emoji_u2049, R.drawable.emoji_u3030, R.drawable.emoji_u27b0, R.drawable.emoji_u2660,
-            R.drawable.emoji_u2665, R.drawable.emoji_u2663, R.drawable.emoji_u2666, R.drawable.emoji_u1f194, R.drawable.emoji_u1f511,
-            R.drawable.emoji_u21a9, R.drawable.emoji_u1f191, R.drawable.emoji_u1f50d, R.drawable.emoji_u1f512, R.drawable.emoji_u1f513,
-            R.drawable.emoji_u21aa, R.drawable.emoji_u1f510, R.drawable.emoji_u2611, R.drawable.emoji_u1f518, R.drawable.emoji_u1f50e,
-            R.drawable.emoji_u1f516, R.drawable.emoji_u1f50f, R.drawable.emoji_u1f503, R.drawable.emoji_u1f500, R.drawable.emoji_u1f501,
-            R.drawable.emoji_u1f502, R.drawable.emoji_u1f504, R.drawable.emoji_u1f4e7, R.drawable.emoji_u1f505, R.drawable.emoji_u1f506,
-            R.drawable.emoji_u1f507, R.drawable.emoji_u1f508, R.drawable.emoji_u1f509, R.drawable.emoji_u1f50a, R.drawable.emoji_u1f1e6,
-            R.drawable.emoji_u1f1e7, R.drawable.emoji_u1f1e8, R.drawable.emoji_u1f1e9, R.drawable.emoji_u1f1ea, R.drawable.emoji_u1f1eb,
-            R.drawable.emoji_u1f1ec, R.drawable.emoji_u1f1ed, R.drawable.emoji_u1f1ee, R.drawable.emoji_u1f1ef, R.drawable.emoji_u1f1f0,
-            R.drawable.emoji_u1f1f1, R.drawable.emoji_u1f1f2, R.drawable.emoji_u1f1f3, R.drawable.emoji_u1f1f4, R.drawable.emoji_u1f1f5,
-            R.drawable.emoji_u1f1f6, R.drawable.emoji_u1f1f7, R.drawable.emoji_u1f1f8, R.drawable.emoji_u1f1f9, R.drawable.emoji_u1f1fa,
-            R.drawable.emoji_u1f1fb, R.drawable.emoji_u1f1fc, R.drawable.emoji_u1f1fd, R.drawable.emoji_u1f1fe, R.drawable.emoji_u1f1ff
-    );
+    public ArrayList<Integer> getOtherIconIds() {
+        return otherIconIds;
+    }
 
-    ArrayList<Integer> natureIconIds = Utility.initArrayList(
-            // nature
-            R.drawable.emoji_u1f415, R.drawable.emoji_u1f436, R.drawable.emoji_u1f429, R.drawable.emoji_u1f408, R.drawable.emoji_u1f431,
-            R.drawable.emoji_u1f400, R.drawable.emoji_u1f401, R.drawable.emoji_u1f42d, R.drawable.emoji_u1f439, R.drawable.emoji_u1f422,
-            R.drawable.emoji_u1f407, R.drawable.emoji_u1f430, R.drawable.emoji_u1f413, R.drawable.emoji_u1f414, R.drawable.emoji_u1f423,
-            R.drawable.emoji_u1f424, R.drawable.emoji_u1f425, R.drawable.emoji_u1f426, R.drawable.emoji_u1f40f, R.drawable.emoji_u1f411,
-            R.drawable.emoji_u1f410, R.drawable.emoji_u1f43a, R.drawable.emoji_u1f403, R.drawable.emoji_u1f402, R.drawable.emoji_u1f404,
-            R.drawable.emoji_u1f42e, R.drawable.emoji_u1f434, R.drawable.emoji_u1f417, R.drawable.emoji_u1f416, R.drawable.emoji_u1f437,
-            R.drawable.emoji_u1f43d, R.drawable.emoji_u1f438, R.drawable.emoji_u1f40d, R.drawable.emoji_u1f43c, R.drawable.emoji_u1f427,
-            R.drawable.emoji_u1f418, R.drawable.emoji_u1f428, R.drawable.emoji_u1f412, R.drawable.emoji_u1f435, R.drawable.emoji_u1f406,
-            R.drawable.emoji_u1f42f, R.drawable.emoji_u1f43b, R.drawable.emoji_u1f42a, R.drawable.emoji_u1f42b, R.drawable.emoji_u1f40a,
-            R.drawable.emoji_u1f433, R.drawable.emoji_u1f40b, R.drawable.emoji_u1f41f, R.drawable.emoji_u1f420, R.drawable.emoji_u1f421,
-            R.drawable.emoji_u1f419, R.drawable.emoji_u1f41a, R.drawable.emoji_u1f42c, R.drawable.emoji_u1f40c, R.drawable.emoji_u1f41b,
-            R.drawable.emoji_u1f41c, R.drawable.emoji_u1f41d, R.drawable.emoji_u1f41e, R.drawable.emoji_u1f432, R.drawable.emoji_u1f409,
-            R.drawable.emoji_u1f43e, R.drawable.emoji_u1f378, R.drawable.emoji_u1f37a, R.drawable.emoji_u1f37b, R.drawable.emoji_u1f377,
-            R.drawable.emoji_u1f379, R.drawable.emoji_u1f376, R.drawable.emoji_u2615, R.drawable.emoji_u1f375, R.drawable.emoji_u1f37c,
-            R.drawable.emoji_u1f374, R.drawable.emoji_u1f368, R.drawable.emoji_u1f367, R.drawable.emoji_u1f366, R.drawable.emoji_u1f369,
-            R.drawable.emoji_u1f370, R.drawable.emoji_u1f36a, R.drawable.emoji_u1f36b, R.drawable.emoji_u1f36c, R.drawable.emoji_u1f36d,
-            R.drawable.emoji_u1f36e, R.drawable.emoji_u1f36f, R.drawable.emoji_u1f373, R.drawable.emoji_u1f354, R.drawable.emoji_u1f35f,
-            R.drawable.emoji_u1f35d, R.drawable.emoji_u1f355, R.drawable.emoji_u1f356, R.drawable.emoji_u1f357, R.drawable.emoji_u1f364,
-            R.drawable.emoji_u1f363, R.drawable.emoji_u1f371, R.drawable.emoji_u1f35e, R.drawable.emoji_u1f35c, R.drawable.emoji_u1f359,
-            R.drawable.emoji_u1f35a, R.drawable.emoji_u1f35b, R.drawable.emoji_u1f372, R.drawable.emoji_u1f365, R.drawable.emoji_u1f362,
-            R.drawable.emoji_u1f361, R.drawable.emoji_u1f358, R.drawable.emoji_u1f360, R.drawable.emoji_u1f34c, R.drawable.emoji_u1f34e,
-            R.drawable.emoji_u1f34f, R.drawable.emoji_u1f34a, R.drawable.emoji_u1f34b, R.drawable.emoji_u1f344, R.drawable.emoji_u1f345,
-            R.drawable.emoji_u1f346, R.drawable.emoji_u1f347, R.drawable.emoji_u1f348, R.drawable.emoji_u1f349, R.drawable.emoji_u1f350,
-            R.drawable.emoji_u1f351, R.drawable.emoji_u1f352, R.drawable.emoji_u1f353, R.drawable.emoji_u1f34d, R.drawable.emoji_u1f330,
-            R.drawable.emoji_u1f331, R.drawable.emoji_u1f332, R.drawable.emoji_u1f333, R.drawable.emoji_u1f334, R.drawable.emoji_u1f335,
-            R.drawable.emoji_u1f337, R.drawable.emoji_u1f338, R.drawable.emoji_u1f339, R.drawable.emoji_u1f340, R.drawable.emoji_u1f341,
-            R.drawable.emoji_u1f342, R.drawable.emoji_u1f343, R.drawable.emoji_u1f33a, R.drawable.emoji_u1f33b, R.drawable.emoji_u1f33c,
-            R.drawable.emoji_u1f33d, R.drawable.emoji_u1f33e, R.drawable.emoji_u1f33f, R.drawable.emoji_u2600, R.drawable.emoji_u1f308,
-            R.drawable.emoji_u26c5, R.drawable.emoji_u2601, R.drawable.emoji_u1f301, R.drawable.emoji_u1f302, R.drawable.emoji_u2614,
-            R.drawable.emoji_u1f4a7, R.drawable.emoji_u26a1, R.drawable.emoji_u1f300, R.drawable.emoji_u2744, R.drawable.emoji_u26c4,
-            R.drawable.emoji_u1f319, R.drawable.emoji_u1f31e, R.drawable.emoji_u1f31d, R.drawable.emoji_u1f31a, R.drawable.emoji_u1f31b,
-            R.drawable.emoji_u1f31c, R.drawable.emoji_u1f311, R.drawable.emoji_u1f312, R.drawable.emoji_u1f313, R.drawable.emoji_u1f314,
-            R.drawable.emoji_u1f315, R.drawable.emoji_u1f316, R.drawable.emoji_u1f317, R.drawable.emoji_u1f318, R.drawable.emoji_u1f391,
-            R.drawable.emoji_u1f304, R.drawable.emoji_u1f305, R.drawable.emoji_u1f307, R.drawable.emoji_u1f306, R.drawable.emoji_u1f303,
-            R.drawable.emoji_u1f30c, R.drawable.emoji_u1f309, R.drawable.emoji_u1f30a, R.drawable.emoji_u1f30b, R.drawable.emoji_u1f30e,
-            R.drawable.emoji_u1f30f, R.drawable.emoji_u1f30d, R.drawable.emoji_u1f310
-    );
+    public ArrayList<Integer> getPeopleIconIds() {
+        return peopleIconIds;
+    }
+
+    public ArrayList<Integer> getThingsIconIds() {
+        return thingsIconIds;
+    }
+
+    public ArrayList<Integer> getTransIconIds() {
+        return transIconIds;
+    }
+
 }

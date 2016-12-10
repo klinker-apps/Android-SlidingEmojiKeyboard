@@ -1,7 +1,8 @@
 package com.klinker.android.emoji_keyboard.view;
 
 import android.content.Context;
-import android.os.Vibrator;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -10,14 +11,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 import com.astuetz.PagerSlidingTabStrip;
 import com.klinker.android.emoji_keyboard.EmojiKeyboardService;
 import com.klinker.android.emoji_keyboard.adapter.EmojiPagerAdapter;
 import com.klinker.android.emoji_keyboard_trial.R;
 
-public class EmojiKeyboardView extends View {
+public class EmojiKeyboardView extends View implements SharedPreferences.OnSharedPreferenceChangeListener{
 
     private ViewPager viewPager;
     private PagerSlidingTabStrip pagerSlidingTabStrip;
@@ -65,6 +65,7 @@ public class EmojiKeyboardView extends View {
 
         viewPager.setCurrentItem(1);
 
+        PreferenceManager.getDefaultSharedPreferences(context).registerOnSharedPreferenceChangeListener(this);
     }
 
     public View getView() {
@@ -109,4 +110,14 @@ public class EmojiKeyboardView extends View {
         setMeasuredDimension(width, height);
     }
 
+    @Override
+    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
+
+        Log.d("sharedPreferenceChange", "function called on change of shared preferences with key " + key);
+        if (key.equals("icon_set")){
+            emojiPagerAdapter = new EmojiPagerAdapter(getContext(), viewPager, height);
+            viewPager.setAdapter(emojiPagerAdapter);
+            this.invalidate();
+        }
+    }
 }

@@ -1,20 +1,22 @@
 package com.klinker.android.emoji_keyboard.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.klinker.android.emoji_keyboard.constants.Apple_EmojiIcons;
 import com.klinker.android.emoji_keyboard.constants.EmojiIcons;
+import com.klinker.android.emoji_keyboard.constants.Google_EmojiIcons;
 import com.klinker.android.emoji_keyboard.constants.EmojiTexts;
-import com.klinker.android.emoji_keyboard.adapter.RecentEmojiAdapter;
-import com.klinker.android.emoji_keyboard.adapter.StaticEmojiAdapter;
 import com.klinker.android.emoji_keyboard.view.KeyboardSinglePageView;
 
 import java.util.ArrayList;
 
-public class    EmojiPagerAdapter extends PagerAdapter {
+public class EmojiPagerAdapter extends PagerAdapter {
 
     public final String[] TITLES = { "recent",
                                     "people",
@@ -34,12 +36,21 @@ public class    EmojiPagerAdapter extends PagerAdapter {
         this.keyboardHeight = keyboardHeight;
         this.pages = new ArrayList<View>();
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(pager.getContext());
+
+        EmojiIcons icons = null;
+        if (sharedPreferences.getString("icon_set", "Google").equals("Google")){
+            icons = new Google_EmojiIcons();
+        } else if (sharedPreferences.getString("icon_set", "Apple").equals("Apple")) {
+            icons = new Apple_EmojiIcons();
+        }
+
         pages.add(new KeyboardSinglePageView(context, new RecentEmojiAdapter(context)).getView());
-        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.peopleEmojiTexts, EmojiIcons.peopleIconIds)).getView());
-        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.thingsEmojiTexts, EmojiIcons.thingsIconIds)).getView());
-        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.natureEmojiTexts, EmojiIcons.natureIconIds)).getView());
-        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.transEmojiTexts, EmojiIcons.transIconIds)).getView());
-        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.otherEmojiTexts, EmojiIcons.otherIconIds)).getView());
+        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.peopleEmojiTexts, icons.getPeopleIconIds())).getView());
+        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.thingsEmojiTexts, icons.getThingsIconIds())).getView());
+        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.natureEmojiTexts, icons.getNatureIconIds())).getView());
+        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.transEmojiTexts, icons.getTransIconIds())).getView());
+        pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.otherEmojiTexts, icons.getOtherIconIds())).getView());
 
     }
 

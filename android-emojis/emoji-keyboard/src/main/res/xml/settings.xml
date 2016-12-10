@@ -13,7 +13,7 @@
         android:key="icon_set"
         android:title="@string/emoji_icon_set"
         android:entries="@array/emojiIconsCategory"
-        android:entryValues="@array/emojiIconsCategorySet"
+        android:entryValues="@array/emojiIconsCategory"
         android:defaultValue="1" />
 
 </PreferenceScreen>
