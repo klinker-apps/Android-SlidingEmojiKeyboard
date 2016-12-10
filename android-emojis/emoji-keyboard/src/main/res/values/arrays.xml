@@ -13,7 +13,7 @@
     </string-array>
 
     <string-array name="emojiIconsCategory">
-        <item>Google</item>
-        <item>Apple</item>
+        <item>@string/setting_change_icon_set_value_google</item>
+        <item>@string/setting_change_icon_set_value_apple</item>
     </string-array>
 </resources>

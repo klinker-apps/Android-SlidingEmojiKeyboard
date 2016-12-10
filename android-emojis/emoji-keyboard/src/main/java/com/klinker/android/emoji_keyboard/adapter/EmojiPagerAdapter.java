@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.klinker.android.emoji_keyboard.MainSettings;
 import com.klinker.android.emoji_keyboard.constants.Apple_EmojiIcons;
 import com.klinker.android.emoji_keyboard.constants.EmojiIcons;
 import com.klinker.android.emoji_keyboard.constants.Google_EmojiIcons;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 
 public class EmojiPagerAdapter extends PagerAdapter {
 
-    public final String[] TITLES = { "recent",
+    private final String[] TITLES = { "recent",
                                     "people",
                                     "things",
                                     "nature",
@@ -36,15 +37,7 @@ public class EmojiPagerAdapter extends PagerAdapter {
         this.keyboardHeight = keyboardHeight;
         this.pages = new ArrayList<View>();
 
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(pager.getContext());
-
-        EmojiIcons icons = null;
-        if (sharedPreferences.getString("icon_set", "Google").equals("Google")){
-            icons = new Google_EmojiIcons();
-        } else if (sharedPreferences.getString("icon_set", "Apple").equals("Apple")) {
-            icons = new Apple_EmojiIcons();
-        }
-
+        EmojiIcons icons = getPreferedIconSet();
         pages.add(new KeyboardSinglePageView(context, new RecentEmojiAdapter(context)).getView());
         pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.peopleEmojiTexts, icons.getPeopleIconIds())).getView());
         pages.add(new KeyboardSinglePageView(context, new StaticEmojiAdapter(context, EmojiTexts.thingsEmojiTexts, icons.getThingsIconIds())).getView());
@@ -78,5 +71,22 @@ public class EmojiPagerAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view == object;
+    }
+
+    private EmojiIcons getPreferedIconSet() {
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(pager.getContext());
+
+        if (sharedPreferences
+                .getString(MainSettings.CHANGE_ICON_SET_KEY, MainSettings.CHANGE_ICON_SET_VALUE_DEFAULT)
+                .equals(MainSettings.CHANGE_ICON_SET_VALUE_GOOGLE)){
+            return new Google_EmojiIcons();
+        } else if (sharedPreferences
+                .getString(MainSettings.CHANGE_ICON_SET_KEY, MainSettings.CHANGE_ICON_SET_VALUE_DEFAULT)
+                .equals(MainSettings.CHANGE_ICON_SET_VALUE_APPLE)) {
+            return new Apple_EmojiIcons();
+        }
+
+        return new Google_EmojiIcons();
     }
 }
