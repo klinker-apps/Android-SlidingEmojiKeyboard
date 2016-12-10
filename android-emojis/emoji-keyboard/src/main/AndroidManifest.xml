@@ -19,10 +19,13 @@
             <meta-data android:name="android.view.im" android:resource="@xml/method" />
         </service>
         
-        <activity android:name="com.klinker.android.emoji_keyboard.MainSettings"
-        android:label="@string/settings">
+        <activity
+            android:name="com.klinker.android.emoji_keyboard.MainSettings"
+            android:launchMode="singleTop"
+            android:label="@string/app_name">
         <intent-filter>
-            <action android:name="android.intent.action.MAIN"/>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
     </activity>
     </application>
